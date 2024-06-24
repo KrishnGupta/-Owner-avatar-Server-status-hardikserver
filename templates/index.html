@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Importing Josefin Sans font -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="static/css/style.css" class="css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-status">
+                <img src="https://skyserver.in/wp-content/uploads/2024/01/20231229_000235.svg" alt="Logo" class="logo">
+                <!-- <div class="status-text">Server Status</div> -->
+            </div>
+            <button class="helpdesk-button"><i class="fas fa-home"></i>Home</button>
+        </header>
+        
+        <img src="images/right.png" alt="Status Banner" class="status-banner">
+        
+        <div class="all-services-online">All services are online</div>
+        
+        <section class="status-section">
+            <div class="service-status">
+                <div class="service-header">
+                    <h2>SERVER ( cPanel )</h2>
+                </div>
+                <div class="service-name">
+                    <span class="status-icon online"></span> <span>Running</span>
+                </div>
+                <div class="service-details">
+                    <div class="horizontal-bar">
+                        <span>90 days ago</span>
+                        <div class="line"></div>
+                        <span>100% uptime</span>
+                        <div class="line"></div>
+                        <span>Today</span>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart" id="uptime-chart">
+                            <div id="uptime-bar" class="chart-bar uptime-bar">100%</div>
+                        </div> <br>
+                        <div class="chart" id="response-chart">
+                            <div id="response-bar" class="chart-bar response-bar">75ms</div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+
+        <section class="status-section">
+            <div class="service-status">
+                <div class="service-header">
+                    <h2>SERVER ( aaPanel )</h2>
+                </div>
+                <div class="service-name">
+                    <span class="status-icon online"></span> <span>Running</span>
+                </div>
+                <div class="service-details">
+                    <div class="horizontal-bar">
+                        <span>90 days ago</span>
+                        <div class="line"></div>
+                        <span>100% uptime</span>
+                        <div class="line"></div>
+                        <span>Today</span>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart" id="uptime-chart">
+                            <div id="uptime-bar" class="chart-bar uptime-bar">100%</div>
+                        </div> <br>
+                        <div class="chart" id="response-chart">
+                            <div id="response-bar" class="chart-bar response-bar">75ms</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

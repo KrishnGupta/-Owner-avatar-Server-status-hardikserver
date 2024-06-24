@@ -1,0 +1,249 @@
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-status {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 70px; /* Adjusted max-height for smaller screens */
+    margin-right: 10px;
+}
+
+.status-text {
+    font-size: 24px;
+    font-weight: bold;
+    border-left: 3px solid #ddd;
+    padding-left: 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.helpdesk-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.helpdesk-button:hover {
+    background-color: #0056b3;
+}
+
+.helpdesk-button i {
+    margin-right: 8px;
+}
+
+.status-banner {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.all-services-online {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.status-section {
+    margin-top: 20px;
+}
+
+.service-status {
+    padding: 20px;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.service-header h2 {
+    margin: 0 0 15px;
+    font-size: 22px;
+    color: #007bff;
+}
+
+.service-name {
+    margin: 15px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    color: #333;
+}
+
+.service-name span {
+    margin-left: 10px;
+}
+
+.status-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #28a745; /* Green color */
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chart-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.chart {
+    width: 100%;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-bar {
+    height: 100%;
+    line-height: 40px;
+    color: white;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.uptime-bar {
+    background-color: #28a745;
+}
+
+.response-bar {
+    background-color: #dc3545;
+}
+
+.tick-mark {
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adjusted gap */
+    margin-top: 20px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.service i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.horizontal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #999;
+}
+
+.horizontal-bar span {
+    white-space: nowrap;
+    margin: 0 10px; /* Adjusted margin */
+}
+
+.horizontal-bar .line {
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 10px; /* Adjusted margin */
+}
+
+/* Media Query for Tablets and Phones */
+@media (max-width: 768px) {
+    .logo {
+        max-height: 50px; /* Further reduced max-height */
+    }
+
+    .status-text {
+        font-size: 20px; /* Reduced font size */
+    }
+
+    .service-status {
+        padding: 15px; /* Reduced padding */
+    }
+
+    .service-header h2 {
+        font-size: 20px; /* Reduced font size */
+    }
+
+    .service-name {
+        font-size: 16px; /* Reduced font size */
+        margin: 10px 0; /* Adjusted margin */
+    }
+
+    .chart {
+        height: 30px; /* Reduced height */
+    }
+
+    .chart-bar {
+        line-height: 30px; /* Adjusted line height */
+        font-size: 12px; /* Reduced font size */
+    }
+
+    .horizontal-bar {
+        font-size: 12px; /* Reduced font size */
+    }
+
+    .horizontal-bar .line {
+        margin: 0 5px; /* Further reduced margin */
+    }
+
+    .service-list {
+        gap: 15px; /* Further reduced gap */
+    }
+}
