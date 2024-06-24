@@ -19,7 +19,7 @@
             <button class="helpdesk-button"><i class="fas fa-home"></i>Home</button>
         </header>
         
-        <img src="images/right.png" alt="Status Banner" class="status-banner">
+        <img src="static/images/right.png" alt="Status Banner" class="status-banner">
         
         <div class="all-services-online">All services are online</div>
         
@@ -29,22 +29,25 @@
                     <h2>SERVER ( cPanel )</h2>
                 </div>
                 <div class="service-name">
-                    <span class="status-icon online"></span> <span>Running</span>
+                    <span class="status-icon online"></span> <span>{{ data }}</span>
+                    
                 </div>
                 <div class="service-details">
                     <div class="horizontal-bar">
-                        <span>90 days ago</span>
+                        <span>{{ days }} days ago</span>
                         <div class="line"></div>
+                        <span>{{ hours }} Hours</span> - <span>{{ mins }} Minutes </span>- <span>{{ secs }} Seconds </span> 
+                        <!-- <div class="line"></div>
                         <span>100% uptime</span>
                         <div class="line"></div>
-                        <span>Today</span>
+                        <span>Today</span> -->
                     </div>
                     <div class="chart-container">
                         <div class="chart" id="uptime-chart">
-                            <div id="uptime-bar" class="chart-bar uptime-bar">100%</div>
+                            <div id="uptime-bar" class="chart-bar uptime-bar">{{ uptime_percentage }}%</div>
                         </div> <br>
                         <div class="chart" id="response-chart">
-                            <div id="response-bar" class="chart-bar response-bar">75ms</div>
+                            <div id="response-bar" class="chart-bar response-bar">{{ load }}</div>
                         </div>
                     </div>
                    
