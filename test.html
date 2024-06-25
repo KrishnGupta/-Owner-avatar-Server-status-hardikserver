@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uptime Chart</title>
+    <style>
+        .chart {
+            width: 100%;
+            height: 30px;
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+        .chart-bar {
+            height: 100%;
+            line-height: 30px; /* Center text vertically */
+            text-align: center;
+            color: white;
+        }
+        .uptime-bar {
+            background-color: #4CAF50; /* Green */
+        }
+    </style>
+</head>
+<body>
+    <div class="chart" id="uptime-chart">
+        <div id="uptime-bar" class="chart-bar uptime-bar">100%</div>
+    </div>
+
+    <script>
+        // Example percentage received from server
+        var uptimePercentage = 90; // Replace with your actual logic to fetch data from server
+
+        // Update chart bar width based on percentage
+        var barElement = document.getElementById('uptime-bar');
+        barElement.style.width = uptimePercentage + '%';
+        barElement.textContent = uptimePercentage + '%'; // Display the percentage text inside the bar
+    </script>
+</body>
+</html>

@@ -8,6 +8,69 @@
     <!-- Importing Josefin Sans font -->
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="static/css/style.css" class="css">
+<style>
+    .service-panel {
+        margin: 20px;
+    }
+    .status-icon {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: #28a745;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .online {
+        background-color: green;
+    }
+    .offline {
+        background-color: red;
+    }
+    
+    .all-services-online {
+        color: green;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #d4edda;
+    }
+    .one-service-online {
+        color: orange;
+        text-align: center;
+        background-color: #fff3cd;
+    }
+    .server-offline {
+        color: red;
+        text-align: center;
+        background-color: #f8d7da;
+    }
+    .status-message {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        /* display: flex; */
+        align-items: center;
+        text-align: center;
+    }
+    .hidden {
+        display: none;
+    }
+    .cross-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        }
+    .status-banner {
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 60px;
+        height: auto;
+        border-radius: 50%;
+    }
+</style>
 </head>
 <body>
     <div class="container">
@@ -19,9 +82,10 @@
             <button class="helpdesk-button"><i class="fas fa-home"></i>Home</button>
         </header>
         
-        <img src="static/images/right.png" alt="Status Banner" class="status-banner">
+        <!-- Status Banner -->
+        <img src="static/images/right.png" alt="Status Banner" class="status-banner" id="status-banner">
         
-        <div class="all-services-online">All services are online</div>
+        <div id="status-message" class="status-message all-services-online">All services are online</div>
         
         <section class="status-section">
             <div class="service-status">
@@ -29,10 +93,11 @@
                     <h2>SERVER ( cPanel )</h2>
                 </div>
                 <div class="service-name">
-                    <span class="status-icon online"></span> <span>{{ data }}</span>
+                    <!-- <span class="status-icon online"></span> <span>{{ data }}</span> -->
+                    <span class="status-icon" id="status-icon-1"></span> <span id="status-text-1"></span>
                     
                 </div>
-                <div class="service-details">
+                <div class="service-details" id="service-details-1">
                     <div class="horizontal-bar">
                         <span>{{ days }} days ago</span>
                         <div class="line"></div>
@@ -43,11 +108,13 @@
                         <span>Today</span> -->
                     </div>
                     <div class="chart-container">
-                        <div class="chart" id="uptime-chart">
-                            <div id="uptime-bar" class="chart-bar uptime-bar">{{ uptime_percentage }}%</div>
+                        <!-- <div class="chart" id="uptime-chart">
+                            <div id="uptime-bar" class="chart-bar uptime-bar">{{ uptime_percentage }}%</div> -->
+                        <div class="chart" id="uptime-chart-1">
+                                <div id="uptime-bar-1" class="chart-bar uptime-bar">100%</div>
                         </div> <br>
-                        <div class="chart" id="response-chart">
-                            <div id="response-bar" class="chart-bar response-bar">{{ load }}</div>
+                        <div class="chart" id="response-chart-1">
+                            <div id="response-bar-1" class="chart-bar response-bar">{{ load }}</div>
                         </div>
                     </div>
                    
@@ -61,22 +128,24 @@
                     <h2>SERVER ( aaPanel )</h2>
                 </div>
                 <div class="service-name">
-                    <span class="status-icon online"></span> <span>Running</span>
+                    <!-- <span class="status-icon online"></span> <span>{{ server_status }}</span> -->
+                    <span class="status-icon" id="status-icon-2"></span> <span id="status-text-2"></span>
                 </div>
-                <div class="service-details">
+                <div class="service-details" id="service-details-2">
                     <div class="horizontal-bar">
-                        <span>90 days ago</span>
+                        <span>{{ aapanal_days }} days ago</span>
                         <div class="line"></div>
-                        <span>100% uptime</span>
+                        <span>{{ aapanal_hours }} Hours</span> - <span>{{ aapanal_mins }} Minutes </span>- <span>{{ aapanal_secs }} Seconds </span> 
+                        <!-- <span>100% uptime</span>
                         <div class="line"></div>
-                        <span>Today</span>
+                        <span>Today</span> -->
                     </div>
                     <div class="chart-container">
-                        <div class="chart" id="uptime-chart">
-                            <div id="uptime-bar" class="chart-bar uptime-bar">100%</div>
+                        <div class="chart" id="uptime-chart-2">
+                            <div id="uptime-bar-2" class="chart-bar uptime-bar">100%</div>
                         </div> <br>
-                        <div class="chart" id="response-chart">
-                            <div id="response-bar" class="chart-bar response-bar">75ms</div>
+                        <div class="chart" id="response-chart-2">
+                            <div id="response-bar-2" class="chart-bar response-bar">75ms</div>
                         </div>
                     </div>
                     
@@ -85,5 +154,84 @@
         </section>
     </div>
 
+
+    
+    <script>
+        // Data received from server
+        var serverStatus1 = "Stop"; // Replace with your actual logic to fetch data from server for server 1
+        var serverStatus2 = "{{ server_status }}"; // Replace with your actual logic to fetch data from server for server 2
+
+        // Percentages received from server (hardcoded for demonstration)
+        var uptimePercentage1 = "{{ uptime_percentage }}"; // Replace with your actual logic to fetch data from server for server 1
+        var uptimePercentage2 = "{{ uptime_percentage }}"; // Replace with your actual logic to fetch data from server for server 2
+
+        // Response times received from server (hardcoded for demonstration)
+        var responseTime1 = "{{ load }}ms"; // Replace with your actual logic to fetch data from server for server 1
+        var responseTime2 = "90ms"; // Replace with your actual logic to fetch data from server for server 2
+
+        // Function to update server status and uptime chart
+        function updateServerInfo(status, iconId, textId, uptimePercentage, barId, responseBarId, responseTime, detailsId) {
+            var statusIcon = document.getElementById(iconId);
+            var statusText = document.getElementById(textId);
+            var barElement = document.getElementById(barId);
+            var responseBarElement = document.getElementById(responseBarId);
+            var serviceDetailsElement = document.getElementById(detailsId);
+
+            // Update server status
+            if (status === "Running") {
+                statusIcon.classList.add('online');
+                statusIcon.classList.remove('offline');
+                statusText.textContent = "Running";
+                responseBarElement.classList.remove('hidden');
+                responseBarElement.textContent = responseTime;
+                serviceDetailsElement.classList.remove('hidden');
+            } else {
+                statusIcon.classList.add('offline');
+                statusIcon.classList.remove('online');
+                statusText.textContent = "Stop";
+                uptimePercentage = 0; // Set uptime percentage to 0 if server is not running
+                responseBarElement.classList.add('hidden');
+                serviceDetailsElement.classList.add('hidden');
+            }
+
+            // Update uptime chart bar
+            barElement.style.width = uptimePercentage + '%';
+            barElement.textContent = uptimePercentage + '%';
+        }
+
+        // Function to update overall status message and banner
+        function updateStatusMessage(status1, status2) {
+            var statusMessage = document.getElementById('status-message');
+            var statusBanner = document.getElementById('status-banner');
+            if (status1 === "Running" && status2 === "Running") {
+                statusMessage.textContent = "All services are online";
+                statusMessage.className = "status-message all-services-online";
+                statusBanner.src = 'static/images/right.png'; // Example right icon URL
+            } else if (status1 === "Running" || status2 === "Running") {
+                statusMessage.textContent = "One service is online and one is offline";
+                statusMessage.className = "status-message one-service-online";
+                statusBanner.src = 'static/images/right.png'; // Example right icon URL
+            } else {
+                statusMessage.textContent = "Server Offline";
+                statusMessage.className = "status-message server-offline";
+                statusBanner.src = 'static/images/cancle.png'; // Example cancel icon URL
+                
+                // // Add cross icon
+                // var crossIcon = document.createElement('img');
+                // crossIcon.src = 'https://img.icons8.com/ios-filled/50/000000/cancel.png'; // Example cross icon URL
+                // crossIcon.className = 'cross-icon';
+                // statusMessage.appendChild(crossIcon);
+            }
+        }
+
+        // Update first server panel
+        updateServerInfo(serverStatus1, 'status-icon-1', 'status-text-1', uptimePercentage1, 'uptime-bar-1', 'response-bar-1', responseTime1, 'service-details-1');
+
+        // Update second server panel
+        updateServerInfo(serverStatus2, 'status-icon-2', 'status-text-2', uptimePercentage2, 'uptime-bar-2', 'response-bar-2', responseTime2, 'service-details-2');
+
+        // Update overall status message and banner
+        updateStatusMessage(serverStatus1, serverStatus2);
+    </script>
 </body>
 </html>
