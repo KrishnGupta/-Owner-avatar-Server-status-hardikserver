@@ -116,7 +116,7 @@ header {
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: #28a745; /* Green color */
+    background-color: #28a745;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -202,6 +202,69 @@ header {
     background-color: #ddd;
     margin: 0 10px; /* Adjusted margin */
 }
+
+ .service-panel {
+        margin: 20px;
+    }
+    .status-icon {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: #28a745;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .online {
+        background-color: green;
+    }
+    .offline {
+        background-color: red;
+    }
+    
+    .all-services-online {
+        color: green;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #d4edda;
+    }
+    .one-service-online {
+        color: orange;
+        text-align: center;
+        background-color: #fff3cd;
+    }
+    .server-offline {
+        color: red;
+        text-align: center;
+        background-color: #f8d7da;
+    }
+    .status-message {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 5px;
+        /* display: flex; */
+        align-items: center;
+        text-align: center;
+    }
+    .hidden {
+        display: none;
+    }
+    .cross-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        }
+    .status-banner {
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 60px;
+        height: auto;
+        border-radius: 50%;
+    }
+
 
 /* Media Query for Tablets and Phones */
 @media (max-width: 768px) {

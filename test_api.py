@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Sample data
 server_status = {
     "timestamp": "2024-06-25T11:51:01+0200",
-    "serverStatus": "Stop",
+    "serverStatus": "Running",
     "load_averages": "0.09, 0.07, 0.08",
     "uptime": {
         "days": 57,
