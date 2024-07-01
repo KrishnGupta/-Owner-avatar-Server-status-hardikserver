@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     try:
-        response = requests.get('https://status.skyserver.in/status.php')
+        response = requests.get('https://SkyServer.in/client/status/status.php')
         data = response.json()
         status = data['serverStatus']
         days = data['uptime']['days']
